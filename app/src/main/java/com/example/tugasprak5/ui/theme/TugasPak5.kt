@@ -237,3 +237,29 @@ fun BiodataScreen() {
 
                     Spacer(modifier = Modifier.height(12.dp))
 
+                    Button(
+                        onClick = { showResult = true },
+                        enabled = firstName.isNotBlank() &&
+                                lastName.isNotBlank() &&
+                                email.isNotBlank() &&
+                                birthDate.isNotBlank() &&
+                                experience.isNotBlank() &&
+                                (androidSkill || uiuxSkill || webSkill),
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .height(50.dp),
+                        shape = RoundedCornerShape(16.dp),
+                        colors = ButtonDefaults.buttonColors(
+                            containerColor = purple,
+                            disabledContainerColor =
+                                colorResource(R.color.biodata_disabled)
+                        )
+                    ) {
+                        Text(
+                            text = stringResource(R.string.proceed),
+                            color = white,
+                            fontWeight = FontWeight.Bold
+                        )
+                    }
+
+
