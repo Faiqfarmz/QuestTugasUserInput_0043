@@ -291,3 +291,25 @@ private fun BiodataInput(
     )
 }
 
+@Composable
+private fun SkillOption(
+    label: String,
+    checked: Boolean,
+    onCheckedChange: (Boolean) -> Unit
+) {
+    Row(
+        verticalAlignment = Alignment.CenterVertically,
+        horizontalArrangement = Arrangement.spacedBy(4.dp)
+    ) {
+        Checkbox(
+            checked = checked,
+            onCheckedChange = onCheckedChange
+        )
+
+        Text(
+            text = label,
+            fontSize = 14.sp,
+            color = colorResource(R.color.biodata_text)
+        )
+    }
+}
