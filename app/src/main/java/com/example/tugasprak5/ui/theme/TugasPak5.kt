@@ -186,4 +186,27 @@ fun BiodataScreen() {
                             singleLine = true
                         )
 
+                        ExposedDropdownMenu(
+                            expanded = expanded,
+                            onDismissRequest = {
+                                expanded = false
+                            }
+                        ) {
+                            listOf(
+                                R.string.experience_beginner,
+                                R.string.experience_intermediate,
+                                R.string.experience_expert
+                            ).forEach { option ->
+                                DropdownMenuItem(
+                                    text = {
+                                        Text(text = stringResource(id = option))
+                                    },
+                                    onClick = {
+                                        experience = context.getString(option)
+                                        expanded = false
+                                    }
+                                )
+                            }
+                        }
+                    }
 
