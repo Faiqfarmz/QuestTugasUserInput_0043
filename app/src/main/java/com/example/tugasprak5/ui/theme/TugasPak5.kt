@@ -158,3 +158,18 @@ fun BiodataScreen() {
                         singleLine = true
                     )
 
+                    ExposedDropdownMenuBox(
+                        expanded = expanded,
+                        onExpandedChange = {
+                            expanded = !expanded
+                        },
+                        modifier = Modifier.fillMaxWidth()
+                    ) {
+                        OutlinedTextField(
+                            value = experience,
+                            onValueChange = {},
+                            readOnly = true,
+                            label = {
+                                Text(stringResource(R.string.experience))
+                            },
+
