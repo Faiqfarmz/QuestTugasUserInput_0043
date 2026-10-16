@@ -10,5 +10,11 @@
     <string name="skill_android">Android</string>
     <string name="skill_uiux">UI/UX</string>
     <string name="skill_web">Web</string>
-
+    <string name="proceed">Proceed</string>
+    <string name="select_date">Pilih tanggal lahir</string>
+    <string name="select_experience">Pilih pengalaman</string>
+    <string name="experience_beginner">Beginner</string>
+    <string name="experience_intermediate">Intermediate</string>
+    <string name="experience_expert">Expert</string>
+    <string name="date_format">%1$02d/%2$02d/%3$04d</string>
 </resources>
