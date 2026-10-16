@@ -274,3 +274,20 @@ fun BiodataScreen() {
     }
 }
 
+@Composable
+private fun BiodataInput(
+    value: String,
+    onValueChange: (String) -> Unit,
+    label: String,
+    modifier: Modifier = Modifier
+) {
+    OutlinedTextField(
+        value = value,
+        onValueChange = onValueChange,
+        label = { Text(label) },
+        modifier = modifier,
+        shape = RoundedCornerShape(16.dp),
+        singleLine = true
+    )
+}
+
