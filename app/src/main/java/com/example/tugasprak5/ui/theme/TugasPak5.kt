@@ -119,4 +119,10 @@ fun BiodataScreen() {
                         modifier = Modifier.fillMaxWidth()
                     )
 
+                    BiodataInput(
+                        value = email,
+                        onValueChange = { email = it },
+                        label = stringResource(R.string.email),
+                        modifier = Modifier.fillMaxWidth()
+                    )
 
