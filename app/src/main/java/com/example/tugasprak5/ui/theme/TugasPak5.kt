@@ -172,4 +172,18 @@ fun BiodataScreen() {
                             label = {
                                 Text(stringResource(R.string.experience))
                             },
+                            trailingIcon = {
+                                ExposedDropdownMenuDefaults.TrailingIcon(
+                                    expanded = expanded
+                                )
+                            },
+                            modifier = Modifier
+                                .menuAnchor(
+                                    ExposedDropdownMenuAnchorType.PrimaryNotEditable
+                                )
+                                .fillMaxWidth(),
+                            shape = RoundedCornerShape(16.dp),
+                            singleLine = true
+                        )
+
 
