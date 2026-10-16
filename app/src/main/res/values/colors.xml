@@ -4,5 +4,7 @@
     <color name="biodata_background">#F8F7FC</color>
     <color name="biodata_white">#FFFFFF</color>
     <color name="biodata_text">#292929</color>
-
+    <color name="biodata_hint">#85858D</color>
+    <color name="biodata_border">#A0A0AA</color>
+    <color name="biodata_disabled">#E2E2E2</color>
 </resources>
