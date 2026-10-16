@@ -1,6 +1,5 @@
 package com.example.tugasprak5
 
-
 import android.app.DatePickerDialog
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
@@ -22,5 +21,16 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import java.util.Calendar
+
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+fun BiodataScreen() {
+    val context = LocalContext.current
+
+    var firstName by remember { mutableStateOf("") }
+    var lastName by remember { mutableStateOf("") }
+    var email by remember { mutableStateOf("") }
+    var birthDate by remember { mutableStateOf("") }
+    var experience by remember { mutableStateOf("") }
 
 
