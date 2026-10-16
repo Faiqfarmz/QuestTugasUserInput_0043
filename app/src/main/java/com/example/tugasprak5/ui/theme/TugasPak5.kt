@@ -210,3 +210,16 @@ fun BiodataScreen() {
                         }
                     }
 
+                    Text(
+                        text = stringResource(R.string.choose_skill),
+                        color = textColor,
+                        fontWeight = FontWeight.Bold,
+                        fontSize = 14.sp
+                    )
+
+                    SkillOption(
+                        label = stringResource(R.string.skill_android),
+                        checked = androidSkill,
+                        onCheckedChange = { androidSkill = it }
+                    )
+
