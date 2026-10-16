@@ -126,3 +126,11 @@ fun BiodataScreen() {
                         modifier = Modifier.fillMaxWidth()
                     )
 
+                    OutlinedTextField(
+                        value = birthDate,
+                        onValueChange = {},
+                        readOnly = true,
+                        label = {
+                            Text(stringResource(R.string.birth_date))
+                        },
+
