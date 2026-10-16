@@ -133,4 +133,28 @@ fun BiodataScreen() {
                         label = {
                             Text(stringResource(R.string.birth_date))
                         },
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .clickable {
+                                val calendar = Calendar.getInstance()
+
+                                DatePickerDialog(
+                                    context,
+                                    { _, year, month, day ->
+                                        birthDate = String.format(
+                                            java.util.Locale.getDefault(),
+                                            "%02d/%02d/%04d",
+                                            day,
+                                            month + 1,
+                                            year
+                                        )
+                                    },
+                                    calendar.get(Calendar.YEAR),
+                                    calendar.get(Calendar.MONTH),
+                                    calendar.get(Calendar.DAY_OF_MONTH)
+                                ).show()
+                            },
+                        shape = RoundedCornerShape(16.dp),
+                        singleLine = true
+                    )
 
