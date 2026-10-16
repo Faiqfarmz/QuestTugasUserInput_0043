@@ -65,3 +65,16 @@ fun BiodataScreen() {
                 contentScale = ContentScale.Crop
             )
 
+            Surface(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .fillMaxHeight(0.70f)
+                    .align(Alignment.TopCenter)
+                    .padding(top = 215.dp),
+                shape = RoundedCornerShape(
+                    topStart = 30.dp,
+                    topEnd = 30.dp
+                ),
+                color = white,
+                shadowElevation = 8.dp
+            )
