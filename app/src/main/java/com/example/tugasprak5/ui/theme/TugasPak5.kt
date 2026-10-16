@@ -262,4 +262,15 @@ fun BiodataScreen() {
                         )
                     }
 
+                if (showResult) {
+                    Text(
+                        text = "Nama: $firstName $lastName\nEmail: $email",
+                        color = textColor
+                    )
+                }
+                }
+            }
+        }
+    }
+}
 
