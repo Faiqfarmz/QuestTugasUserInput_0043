@@ -85,4 +85,13 @@ fun BiodataScreen() {
                         .padding(horizontal = 24.dp)
                         .padding(top = 22.dp, bottom = 28.dp),
                     verticalArrangement = Arrangement.spacedBy(16.dp)
-                )
+                ) {
+                    Text(
+                        text = stringResource(R.string.biodata_title),
+                        modifier = Modifier.fillMaxWidth(),
+                        color = purple,
+                        fontSize = 28.sp,
+                        fontWeight = FontWeight.Bold,
+                        textAlign = TextAlign.Center
+                    )
+
