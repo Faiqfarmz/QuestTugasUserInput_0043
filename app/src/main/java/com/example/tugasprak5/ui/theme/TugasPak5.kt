@@ -46,4 +46,12 @@ fun BiodataScreen() {
     val hintColor = colorResource(R.color.biodata_hint)
     val calendar = Calendar.getInstance()
 
+    Scaffold(
+        containerColor = backgroundColor
+    ) { paddingValues ->
 
+        Box(
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(paddingValues)
+        )
