@@ -95,3 +95,14 @@ fun BiodataScreen() {
                         textAlign = TextAlign.Center
                     )
 
+                    Text(
+                        text = stringResource(R.string.biodata_subtitle),
+                        modifier = Modifier.fillMaxWidth(),
+                        color = hintColor,
+                        fontSize = 12.sp,
+                        textAlign = TextAlign.Center
+                    )
+
+                    Spacer(modifier = Modifier.height(8.dp))
+
+
