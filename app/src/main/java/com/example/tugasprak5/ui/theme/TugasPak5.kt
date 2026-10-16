@@ -77,4 +77,12 @@ fun BiodataScreen() {
                 ),
                 color = white,
                 shadowElevation = 8.dp
-            )
+            ) {
+                Column(
+                    modifier = Modifier
+                        .fillMaxSize()
+                        .verticalScroll(rememberScrollState())
+                        .padding(horizontal = 24.dp)
+                        .padding(top = 22.dp, bottom = 28.dp),
+                    verticalArrangement = Arrangement.spacedBy(16.dp)
+                )
