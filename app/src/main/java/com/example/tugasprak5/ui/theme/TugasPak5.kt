@@ -33,4 +33,10 @@ fun BiodataScreen() {
     var birthDate by remember { mutableStateOf("") }
     var experience by remember { mutableStateOf("") }
 
+    var androidSkill by remember { mutableStateOf(false) }
+    var uiuxSkill by remember { mutableStateOf(false) }
+    var webSkill by remember { mutableStateOf(false) }
+    var expanded by remember { mutableStateOf(false) }
+    var showResult by remember { mutableStateOf(false) }
+
 
