@@ -223,3 +223,17 @@ fun BiodataScreen() {
                         onCheckedChange = { androidSkill = it }
                     )
 
+                    SkillOption(
+                        label = stringResource(R.string.skill_uiux),
+                        checked = uiuxSkill,
+                        onCheckedChange = { uiuxSkill = it }
+                    )
+
+                    SkillOption(
+                        label = stringResource(R.string.skill_web),
+                        checked = webSkill,
+                        onCheckedChange = { webSkill = it }
+                    )
+
+                    Spacer(modifier = Modifier.height(12.dp))
+
