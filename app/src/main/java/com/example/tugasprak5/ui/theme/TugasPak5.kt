@@ -54,4 +54,14 @@ fun BiodataScreen() {
             modifier = Modifier
                 .fillMaxSize()
                 .padding(paddingValues)
-        )
+        ) {
+            Image(
+                painter = painterResource(R.drawable.gambar),
+                contentDescription = stringResource(R.string.biodata_subtitle),
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(255.dp)
+                    .align(Alignment.TopCenter),
+                contentScale = ContentScale.Crop
+            )
+
