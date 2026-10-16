@@ -39,4 +39,11 @@ fun BiodataScreen() {
     var expanded by remember { mutableStateOf(false) }
     var showResult by remember { mutableStateOf(false) }
 
+    val purple = colorResource(R.color.biodata_purple)
+    val backgroundColor = colorResource(R.color.biodata_background)
+    val white = colorResource(R.color.biodata_white)
+    val textColor = colorResource(R.color.biodata_text)
+    val hintColor = colorResource(R.color.biodata_hint)
+    val calendar = Calendar.getInstance()
+
 
