@@ -1,3 +1,4 @@
+
 package com.example.tugasprak5
 
 import android.app.DatePickerDialog
@@ -21,6 +22,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import java.util.Calendar
+import java.util.Locale
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -36,6 +38,7 @@ fun BiodataScreen() {
     var androidSkill by remember { mutableStateOf(false) }
     var uiuxSkill by remember { mutableStateOf(false) }
     var webSkill by remember { mutableStateOf(false) }
+
     var expanded by remember { mutableStateOf(false) }
     var showResult by remember { mutableStateOf(false) }
 
@@ -44,7 +47,6 @@ fun BiodataScreen() {
     val white = colorResource(R.color.biodata_white)
     val textColor = colorResource(R.color.biodata_text)
     val hintColor = colorResource(R.color.biodata_hint)
-    val calendar = Calendar.getInstance()
 
     Scaffold(
         containerColor = backgroundColor
@@ -55,9 +57,12 @@ fun BiodataScreen() {
                 .fillMaxSize()
                 .padding(paddingValues)
         ) {
+            // Gambar header di belakang form
             Image(
                 painter = painterResource(R.drawable.gambar),
-                contentDescription = stringResource(R.string.biodata_subtitle),
+                contentDescription = stringResource(
+                    R.string.biodata_subtitle
+                ),
                 modifier = Modifier
                     .fillMaxWidth()
                     .height(255.dp)
@@ -65,12 +70,12 @@ fun BiodataScreen() {
                 contentScale = ContentScale.Crop
             )
 
+
             Surface(
                 modifier = Modifier
                     .fillMaxWidth()
                     .fillMaxHeight(0.70f)
-                    .align(Alignment.TopCenter)
-                    .padding(top = 215.dp),
+                    .align(Alignment.BottomCenter),
                 shape = RoundedCornerShape(
                     topStart = 30.dp,
                     topEnd = 30.dp
@@ -82,10 +87,13 @@ fun BiodataScreen() {
                     modifier = Modifier
                         .fillMaxSize()
                         .verticalScroll(rememberScrollState())
-                        .padding(horizontal = 24.dp)
-                        .padding(top = 22.dp, bottom = 28.dp),
+                        .padding(
+                            horizontal = 24.dp,
+                            vertical = 22.dp
+                        ),
                     verticalArrangement = Arrangement.spacedBy(16.dp)
                 ) {
+                    // Judul
                     Text(
                         text = stringResource(R.string.biodata_title),
                         modifier = Modifier.fillMaxWidth(),
@@ -95,6 +103,7 @@ fun BiodataScreen() {
                         textAlign = TextAlign.Center
                     )
 
+                    // Subjudul
                     Text(
                         text = stringResource(R.string.biodata_subtitle),
                         modifier = Modifier.fillMaxWidth(),
@@ -105,20 +114,27 @@ fun BiodataScreen() {
 
                     Spacer(modifier = Modifier.height(8.dp))
 
-                    BiodataInput(
-                        value = firstName,
-                        onValueChange = { firstName = it },
-                        label = stringResource(R.string.first_name),
-                        modifier = Modifier.fillMaxWidth()
-                    )
+                    // Nama depan dan belakang sejajar
+                    Row(
+                        modifier = Modifier.fillMaxWidth(),
+                        horizontalArrangement = Arrangement.spacedBy(8.dp)
+                    ) {
+                        BiodataInput(
+                            value = firstName,
+                            onValueChange = { firstName = it },
+                            label = stringResource(R.string.first_name),
+                            modifier = Modifier.weight(1f)
+                        )
 
-                    BiodataInput(
-                        value = lastName,
-                        onValueChange = { lastName = it },
-                        label = stringResource(R.string.last_name),
-                        modifier = Modifier.fillMaxWidth()
-                    )
+                        BiodataInput(
+                            value = lastName,
+                            onValueChange = { lastName = it },
+                            label = stringResource(R.string.last_name),
+                            modifier = Modifier.weight(1f)
+                        )
+                    }
 
+                    // Email memenuhi lebar form
                     BiodataInput(
                         value = email,
                         onValueChange = { email = it },
@@ -126,90 +142,114 @@ fun BiodataScreen() {
                         modifier = Modifier.fillMaxWidth()
                     )
 
-                    OutlinedTextField(
-                        value = birthDate,
-                        onValueChange = {},
-                        readOnly = true,
-                        label = {
-                            Text(stringResource(R.string.birth_date))
-                        },
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .clickable {
-                                val calendar = Calendar.getInstance()
-
-                                DatePickerDialog(
-                                    context,
-                                    { _, year, month, day ->
-                                        birthDate = String.format(
-                                            java.util.Locale.getDefault(),
-                                            "%02d/%02d/%04d",
-                                            day,
-                                            month + 1,
-                                            year
-                                        )
-                                    },
-                                    calendar.get(Calendar.YEAR),
-                                    calendar.get(Calendar.MONTH),
-                                    calendar.get(Calendar.DAY_OF_MONTH)
-                                ).show()
-                            },
-                        shape = RoundedCornerShape(16.dp),
-                        singleLine = true
-                    )
-
-                    ExposedDropdownMenuBox(
-                        expanded = expanded,
-                        onExpandedChange = {
-                            expanded = !expanded
-                        },
-                        modifier = Modifier.fillMaxWidth()
+                    // Tanggal lahir dan pengalaman sejajar
+                    Row(
+                        modifier = Modifier.fillMaxWidth(),
+                        horizontalArrangement = Arrangement.spacedBy(8.dp),
+                        verticalAlignment = Alignment.CenterVertically
                     ) {
-                        OutlinedTextField(
-                            value = experience,
-                            onValueChange = {},
-                            readOnly = true,
-                            label = {
-                                Text(stringResource(R.string.experience))
-                            },
-                            trailingIcon = {
-                                ExposedDropdownMenuDefaults.TrailingIcon(
-                                    expanded = expanded
-                                )
-                            },
-                            modifier = Modifier
-                                .menuAnchor(
-                                    ExposedDropdownMenuAnchorType.PrimaryNotEditable
-                                )
-                                .fillMaxWidth(),
-                            shape = RoundedCornerShape(16.dp),
-                            singleLine = true
-                        )
 
-                        ExposedDropdownMenu(
-                            expanded = expanded,
-                            onDismissRequest = {
-                                expanded = false
-                            }
+
+                        Box(
+                            modifier = Modifier.weight(1f)
                         ) {
-                            listOf(
-                                R.string.experience_beginner,
-                                R.string.experience_intermediate,
-                                R.string.experience_expert
-                            ).forEach { option ->
-                                DropdownMenuItem(
-                                    text = {
-                                        Text(text = stringResource(id = option))
-                                    },
-                                    onClick = {
-                                        experience = context.getString(option)
-                                        expanded = false
+                            OutlinedTextField(
+                                value = birthDate,
+                                onValueChange = {},
+                                readOnly = true,
+                                label = {
+                                    Text(stringResource(R.string.birth_date))
+                                },
+                                modifier = Modifier.fillMaxWidth(),
+                                shape = RoundedCornerShape(16.dp),
+                                singleLine = true
+                            )
+
+                            Box(
+                                modifier = Modifier
+                                    .matchParentSize()
+                                    .clickable {
+                                        val calendar = Calendar.getInstance()
+
+                                        DatePickerDialog(
+                                            context,
+                                            { _, year, month, day ->
+                                                birthDate = String.format(
+                                                    java.util.Locale.getDefault(),
+                                                    "%02d/%02d/%04d",
+                                                    day,
+                                                    month + 1,
+                                                    year
+                                                )
+                                            },
+                                            calendar.get(Calendar.YEAR),
+                                            calendar.get(Calendar.MONTH),
+                                            calendar.get(Calendar.DAY_OF_MONTH)
+                                        ).show()
                                     }
-                                )
+                            )
+                        }
+
+
+
+                        ExposedDropdownMenuBox(
+                            expanded = expanded,
+                            onExpandedChange = {
+                                expanded = !expanded
+                            },
+                            modifier = Modifier.weight(1f)
+                        ) {
+                            OutlinedTextField(
+                                value = experience,
+                                onValueChange = {},
+                                readOnly = true,
+                                label = {
+                                    Text(
+                                        stringResource(R.string.experience),
+                                        maxLines = 1
+                                    )
+                                },
+                                trailingIcon = {
+                                    ExposedDropdownMenuDefaults.TrailingIcon(
+                                        expanded = expanded
+                                    )
+                                },
+                                modifier = Modifier
+                                    .menuAnchor(
+                                        ExposedDropdownMenuAnchorType.PrimaryNotEditable
+                                    )
+                                    .fillMaxWidth(),
+                                shape = RoundedCornerShape(16.dp),
+                                singleLine = true
+                            )
+
+
+                            ExposedDropdownMenu(
+                                expanded = expanded,
+                                onDismissRequest = {
+                                    expanded = false
+                                }
+                            ) {
+                                listOf(
+                                    R.string.experience_beginner to "Beginner",
+                                    R.string.experience_intermediate to "Intermediate",
+                                    R.string.experience_expert to "Expert"
+                                ).forEach { (option, optionText) ->
+                                    DropdownMenuItem(
+                                        text = {
+                                            Text(text = stringResource(id = option))
+                                        },
+                                        onClick = {
+                                            experience = optionText
+                                            expanded = false
+                                        }
+                                    )
+                                }
                             }
                         }
                     }
 
+                    // Judul pilihan skill
                     Text(
                         text = stringResource(R.string.choose_skill),
                         color = textColor,
@@ -217,28 +257,38 @@ fun BiodataScreen() {
                         fontSize = 14.sp
                     )
 
-                    SkillOption(
-                        label = stringResource(R.string.skill_android),
-                        checked = androidSkill,
-                        onCheckedChange = { androidSkill = it }
-                    )
+                    // Semua skill dalam satu baris
+                    Row(
+                        modifier = Modifier.fillMaxWidth(),
+                        horizontalArrangement = Arrangement.SpaceBetween,
+                        verticalAlignment = Alignment.CenterVertically
+                    ) {
+                        SkillOption(
+                            label = stringResource(R.string.skill_android),
+                            checked = androidSkill,
+                            onCheckedChange = { androidSkill = it }
+                        )
 
-                    SkillOption(
-                        label = stringResource(R.string.skill_uiux),
-                        checked = uiuxSkill,
-                        onCheckedChange = { uiuxSkill = it }
-                    )
+                        SkillOption(
+                            label = stringResource(R.string.skill_uiux),
+                            checked = uiuxSkill,
+                            onCheckedChange = { uiuxSkill = it }
+                        )
 
-                    SkillOption(
-                        label = stringResource(R.string.skill_web),
-                        checked = webSkill,
-                        onCheckedChange = { webSkill = it }
-                    )
+                        SkillOption(
+                            label = stringResource(R.string.skill_web),
+                            checked = webSkill,
+                            onCheckedChange = { webSkill = it }
+                        )
+                    }
 
                     Spacer(modifier = Modifier.height(12.dp))
 
+                    // Tombol Proceed
                     Button(
-                        onClick = { showResult = true },
+                        onClick = {
+                            showResult = true
+                        },
                         enabled = firstName.isNotBlank() &&
                                 lastName.isNotBlank() &&
                                 email.isNotBlank() &&
@@ -251,8 +301,9 @@ fun BiodataScreen() {
                         shape = RoundedCornerShape(16.dp),
                         colors = ButtonDefaults.buttonColors(
                             containerColor = purple,
-                            disabledContainerColor =
-                                colorResource(R.color.biodata_disabled)
+                            disabledContainerColor = colorResource(
+                                R.color.biodata_disabled
+                            )
                         )
                     ) {
                         Text(
@@ -262,12 +313,16 @@ fun BiodataScreen() {
                         )
                     }
 
-                if (showResult) {
-                    Text(
-                        text = "Nama: $firstName $lastName\nEmail: $email",
-                        color = textColor
-                    )
-                }
+                    // Hasil biodata
+                    if (showResult) {
+                        Text(
+                            text = "Nama: $firstName $lastName\n" +
+                                    "Email: $email\n" +
+                                    "Tanggal Lahir: $birthDate\n" +
+                                    "Experience: $experience",
+                            color = textColor
+                        )
+                    }
                 }
             }
         }
@@ -284,7 +339,9 @@ private fun BiodataInput(
     OutlinedTextField(
         value = value,
         onValueChange = onValueChange,
-        label = { Text(label) },
+        label = {
+            Text(text = label)
+        },
         modifier = modifier,
         shape = RoundedCornerShape(16.dp),
         singleLine = true
@@ -299,7 +356,7 @@ private fun SkillOption(
 ) {
     Row(
         verticalAlignment = Alignment.CenterVertically,
-        horizontalArrangement = Arrangement.spacedBy(4.dp)
+        horizontalArrangement = Arrangement.spacedBy(2.dp)
     ) {
         Checkbox(
             checked = checked,
@@ -308,7 +365,7 @@ private fun SkillOption(
 
         Text(
             text = label,
-            fontSize = 14.sp,
+            fontSize = 12.sp,
             color = colorResource(R.color.biodata_text)
         )
     }
