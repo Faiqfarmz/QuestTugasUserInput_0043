@@ -105,4 +105,10 @@ fun BiodataScreen() {
 
                     Spacer(modifier = Modifier.height(8.dp))
 
+                    BiodataInput(
+                        value = firstName,
+                        onValueChange = { firstName = it },
+                        label = stringResource(R.string.first_name),
+                        modifier = Modifier.fillMaxWidth()
+                    )
 
