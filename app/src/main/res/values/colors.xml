@@ -1,10 +1,11 @@
+
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="biodata_purple">#7042BD</color>
-    <color name="biodata_background">#F8F7FC</color>
+    <color name="biodata_purple">#7C3AED</color>
+    <color name="biodata_background">#F5F3FF</color>
     <color name="biodata_white">#FFFFFF</color>
-    <color name="biodata_text">#292929</color>
-    <color name="biodata_hint">#85858D</color>
-    <color name="biodata_border">#A0A0AA</color>
-    <color name="biodata_disabled">#E2E2E2</color>
+    <color name="biodata_text">#1F2937</color>
+    <color name="biodata_hint">#6B7280</color>
+    <color name="biodata_border">#D1D5DB</color>
+    <color name="biodata_disabled">#C4B5FD</color>
 </resources>
